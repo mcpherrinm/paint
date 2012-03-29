@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<meta charset="ascii">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://taurine.csclub.uwaterloo.ca:3000/socket.io/socket.io.js"></script>
+<script src="client.js"> </script>
+
+<style>
+  canvas {
+    border: 1px solid black;
+  }
+  div#colours span {
+    border: 1px solid black;
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+  }
+  div#colours {
+    margin: 1em;
+  }
+</style>
+
+<body onload="start();">
+
+<script>
+function start() {
+  var socket = io.connect('http://taurine.csclub.uwaterloo.ca:3000');
+  socket.emit('clear');
+}
+</script>

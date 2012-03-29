@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<meta charset="ascii">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://taurine.csclub.uwaterloo.ca:3000/socket.io/socket.io.js"></script>
+<script src="client.js"> </script>
+
+<style>
+  canvas {
+    border: 1px solid black;
+  }
+  div#colours span {
+    border: 1px solid black;
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+  }
+  div#colours {
+    margin: 1em;
+  }
+</style>
+
+<body onload="setup();">
+<h1> Paint! Click to draw, ctrl for rainbow mode,shift for insanity</h1>
+
+<div id="colours">
+</div>
+
+<div>
+<canvas id="share" width="1000" height="500">
+</canvas>
+</div>
+
+<script>
+function setup() {
+  var c = document.getElementById("colours");
+  numcolours=24;
+  for(var i = 0; i < numcolours; i++){
+    var box = document.createElement("span");
+    clr = i*Math.round(360/numcolours);
+    box.style.backgroundColor = "hsl(" + clr + ", 100%, 40%)";
+    box.addEventListener('click', function(evt) {colour(evt.target.style.backgroundColor) });
+    c.appendChild(box)
+  }
+
+  // kick off client.js stuff:
+  start();
+}
+
+</script>
+
+</body>
+</html>
